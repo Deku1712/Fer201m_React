@@ -3,7 +3,7 @@ import './App.css';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, {Component} from 'react';
-
+import Menu from './components/MenuComponent';
 
 
 class App extends Component {
@@ -15,6 +15,7 @@ class App extends Component {
             <NavbarBrand href="/">Ristorante Con Fusion</NavbarBrand>
           </div>
         </Navbar>
+        <Menu />
       </div>
     );
   }

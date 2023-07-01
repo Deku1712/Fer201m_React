@@ -11,10 +11,23 @@ import Contact from './ContactComponent';
 import { COMMENTS } from '../shared/comments';
 import { PROMOTIONS } from '../shared/promotions';
 import { LEADERS } from '../shared/leaders';
+import { Provider } from 'react-redux';
+import store from '../shared/store';
+import Counter from '../shared/Counter';
+import { connect } from 'react-redux';
 
-
+const mapStateToProps = state => {
+  return {
+    dishes: state.dishes,
+    comments: state.comments,
+    promotions: state.promotions,
+    leaders: state.leaders
+  }
+}
 
 class Main extends Component {
+
+
 
   constructor(props) {
     super(props);
@@ -33,11 +46,15 @@ class Main extends Component {
   }
 
   
-
+  
   
 
 
   render() {
+
+    
+    
+
     const HomePage = () => {
       return(
         <Home 
@@ -61,6 +78,9 @@ class Main extends Component {
     return (
       <div>
         <Header />
+        <Counter>
+          
+        </Counter>
         <Routes>
           <Route path='/home' Component={HomePage} />
           <Route exact path='/menu' element = {<Menu dishes={this.state.dishes} onClick = {(dishId) => this.onDishSelect(dishId)} /> }  />
@@ -77,4 +97,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default (connect(mapStateToProps)(Main));
